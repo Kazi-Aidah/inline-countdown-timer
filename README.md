@@ -1,7 +1,7 @@
 # 📅 Inline Countdown Timer
 
 An Obsidian plugin that renders **live countdowns** and **elapsed time** inside your notes using `[!TIMELEFT]` and `[!TIMEPASSED]` tags.
-🛈 **Only works in Reading Mode.**
+!!! **Only works in Reading Mode.**
 
 ---
 
