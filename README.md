@@ -1,81 +1,129 @@
-# Inline Countdown Timer
-Obsidian Plugin that shows live countdowns and elapsed time in notes with [!TIMELEFT] and [!TIMEPASSED]. Only renders in Reading Mode.
+# 📅 Inline Countdown Timer
 
-# USAGE
-## **TWO MAIN EXPRESSIONS:**
-[!TIMELEFT, START:]
-[!TIMEPASSED, START:]
+An Obsidian plugin that renders **live countdowns** and **elapsed time** inside your notes using `[!TIMELEFT]` and `[!TIMEPASSED]` tags.
+🛈 **Only works in Reading Mode.**
 
-TIMELEFT is for how much time left before reaching the date. You must put a date and time in the ***future***. If that date is in the past, or has been met, it will show "⏰ Time Expired".
+---
 
-TIMEPASSED is for how much time has passed since a date. You must put a date and time in the ***past***. This time will continue for as long as you have the obsidian vault.
+## 🚀 Usage
 
-## **DATE FORMAT OPTIONS**
-[!TIMELEFT, START: 16/07/2025] = DD/MM/YYYY
-[!TIMELEFT, START: 07/16/2025] = MM/DD/YYYY
+### 🔹 Two Main Expressions
 
-Date Month-name Year also works, 
-[!TIMELEFT, START: 02 November 2025] = 3 months, 18 days, 6 hours, 1 minutes, 25 seconds left
-[!TIMEPASSED, START: 02 January 2025]
-[!TIMEPASSED, START: January 02 2025]
-= 6 months 15 days 18 hours 5 minutes 22 seconds passed
-## TIME FORMAT OPTIONS
+```markdown
+[!TIMELEFT, START: <date>]
+[!TIMEPASSED, START: <date>]
+```
+
+* **`TIMELEFT`** → Counts *time remaining* until a future date.
+  If the date is in the past, it will display:
+  `⏰ Time Expired`
+
+* **`TIMEPASSED`** → Shows *time elapsed* since a past date.
+  The timer will keep running continuously.
+
+---
+
+## 📅 Date Format Options
+
+Both numeric and written date formats are supported:
+
+| Example Expression                      | Format Type     |
+| --------------------------------------- | --------------- |
+| `[!TIMELEFT, START: 16/07/2025]`        | `DD/MM/YYYY`    |
+| `[!TIMELEFT, START: 07/16/2025]`        | `MM/DD/YYYY`    |
+| `[!TIMELEFT, START: 02 November 2025]`  | `DD Month YYYY` |
+| `[!TIMEPASSED, START: January 02 2025]` | `Month DD YYYY` |
+
+---
+
+## ⏰ Time Format Options
+
+You can include the time in various formats:
+
+```markdown
 [!TIMEPASSED, START: 16 July 2025 4am]
-[!TIMEPASSED, START: 16 July 2025 0400]
 [!TIMEPASSED, START: 16 July 2025 04:00]
-[!TIMEPASSED, START: 16 July 2025 4am]
+[!TIMEPASSED, START: 16 July 2025 0400]
 [!TIMEPASSED, START: 16 July 2025 - 4am]
-= 14 hours 7 minutes passed 2 Seconds passed
+```
+= 14 hours 7 minutes passed 2 seconds passed
 
-# CUSTOMIZATION:
-## SHORTENED FORMAT:
-2 hour, 12 minutes, 04 seconds = 2h, 12m, 04s
-## UNITS SEPARATOR:
-Unit Separator = ,
-12 minutes, 10 seconds / 12m, 10s
+---
 
-Unit Separator =  -
-12 minutes - 10 seconds / 12m - 10s
+## ⚙️ Customization
 
-Unit Separator =  
-12 minutes 10 seconds / 12m 10s
-## SHOW: YEAR / MONTH / WEEK / DATE / MINUTES / SECONDS
-For example,
-**Show Month ENABLED**
-4 Month, 12 days, 2 weeks...
-**Show Month DISABLED**
-132 days, 2 weeks...
+### 🔸 Shortened Format
 
-## TIME EXPIRED TEXT
-When a date in the ***past*** is selected for TIMELEFT, it will show
-= ⏰ Time Expired
+* `2 hours, 12 minutes, 4 seconds` → `2h, 12m, 4s`
 
-You can change it to anything like:
-= Oh nooooo, time's over :(
-= How dare you leave me...?
-= Time is fleeting.
-= no more.
+### 🔸 Units Separator
 
-## SUFFIXES
-### TIMELEFT:
-2 minutes left can be turned into
-= 2 minutes ago
-= 2 minutes away
-by changing the Left Suffix to ago or away.
-(Note that then ***all*** TIMELEFT will have whatever you set at the end.)
+| Separator | Example Output            |
+| --------- | ------------------------- |
+| `,`       | `12 minutes, 10 seconds`  |
+| `-`       | `12 minutes - 10 seconds` |
+| (space)   | `12 minutes 10 seconds`   |
 
-And if you don't want that,
-You can leave the Left Suffix blank or with a space.
-= 2 minutes (and you can type whatever you want after the expression.)
+### 🔸 Show/Hide Units
 
-EXAMPLE: 2 minutes until dinner (If Left Suffix is blank, or has a space.)
+You can choose to **enable or disable** any of the following time units:
 
-### TIMEPASSED
-and 7 hours passed can be turned into:
-= 7 hours ago
-= 7 hours back 
-or you can leave it blank in the Passed Suffix and type whatever you want after the expression.
-EXAMPLE: 8 hours have gone since I last cried.
+* Years
+* Months
+* Weeks
+* Days
+* Hours
+* Minutes
+* Seconds
 
-## DOES NOT WORK IN LIVE PREVIEW
-Yes, I know that's a bummer but I was having trouble implementing the Countdown in Live Preview Mode. I kept breaking Obsidian.
+**Examples:**
+
+* **With "Months" enabled**: `4 months, 12 days`
+* **With "Months" disabled**: `132 days`
+
+### 🔸 Time Expired Text
+
+When `TIMELEFT` reaches the past, the plugin displays:
+
+```
+⏰ Time Expired
+```
+
+But you can change it to anything you want, like:
+
+* `⛔ Deadline Missed`
+* `😢 Oh nooooo, time's over :(`
+* `⌛ Time is fleeting.`
+* `💀 no more.`
+
+---
+
+## 🔄 Custom Suffixes
+
+### `TIMELEFT` Suffix
+
+* Default: `left`
+* Customizable to: `ago`, `away`, `remaining`, etc.
+* Or leave it **blank** to write your own context.
+
+> **Example:**
+> `[!TIMELEFT, START: ...]` → `2 minutes` (then *you* can write "until dinner")
+
+### `TIMEPASSED` Suffix
+
+* Default: `passed`
+* Customizable to: `ago`, `back`, `elapsed`, etc.
+* Or leave blank and write your own.
+
+> **Example:**
+> `8 hours have gone since I last cried.`
+
+---
+
+## ⚠️ Limitations
+
+### ❌ Not available in Live Preview mode
+
+This plugin only renders in **Reading Mode**.
+Live Preview support caused instability and will be added in a future release (hopefully!).
+
