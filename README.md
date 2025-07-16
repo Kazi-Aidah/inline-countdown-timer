@@ -46,7 +46,7 @@ You can include the time in various formats:
 [!TIMEPASSED, START: 16 July 2025 0400]
 [!TIMEPASSED, START: 16 July 2025 - 4am]
 ```
-= 14 hours 7 minutes passed 2 seconds passed
+= 14 hours, 7 minutes, 2 seconds passed
 
 ---
 
